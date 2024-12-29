@@ -1,0 +1,49 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: imagemcerta_app
+    restart: unless-stopped
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+    ports:
+      - "80:80"
+    networks:
+      - imagemcerta_network
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:5.7
+    container_name: imagemcerta_mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: imagemcerta
+      MYSQL_USER: imagemcerta
+      MYSQL_PASSWORD: imagemcerta
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - imagemcerta_network
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: imagemcerta_phpmyadmin
+    restart: unless-stopped
+    environment:
+      PMA_HOST: imagemcerta_mysql
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "8080:80"
+    networks:
+      - imagemcerta_network
+
+networks:
+  imagemcerta_network:
+    driver: bridge
+
+volumes:
+  mysql_data:

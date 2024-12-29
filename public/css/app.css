@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* Ajuste para a imagem no card */
+.card-img-top {
+    object-fit: cover;
+    width: 100%;
+    height: 430px; /* Aumentei a altura da imagem */
+    cursor: pointer;
+}
+
+/* Ajuste para o card para garantir que ele não quebre e tenha uma altura mínima */
+.card {
+    min-height: 450px; /* Ajustei a altura mínima do card */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+

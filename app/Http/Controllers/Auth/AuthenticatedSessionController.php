@@ -13,47 +13,45 @@ use App\Models\User;
 
 class AuthenticatedSessionController extends Controller
 {
-    /**
-     * Display the login view.
-     */
     public function create(): View
     {
         return view('auth.login');
     }
 
-    /**
-     * Handle an incoming authentication request.
-     */
     public function store(LoginRequest $request): RedirectResponse
     {
+        // Validação direta com mensagens personalizadas
         $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ], [
+            'email.required' => 'O campo e-mail é obrigatório.',
+            'email.email' => 'O campo e-mail deve ser um endereço de e-mail válido.',
+            'password.required' => 'O campo senha é obrigatório.',
         ]);
 
         $user = User::where('email', $request->email)->first();
 
         if (!$user) {
+            // Erro de usuário não encontrado, mensagem personalizada
             throw ValidationException::withMessages([
-                'email' => __('Não existe cadastro com este E-mail.'),
+                'email' => 'Não existe cadastro com este E-mail.',
             ]);
         }
 
         if (!Auth::attempt($request->only('email', 'password'), $request->filled('remember'))) {
+            // Erro de autenticação, senha ou e-mail incorretos
             throw ValidationException::withMessages([
-                'password' => __('A senha ou E-mail está incorreto.'),
+                'password' => 'A senha ou E-mail está incorreto.',
             ]);
         }
 
+        // Regeneração da sessão
         $request->session()->regenerate();
 
-        // Redirecionando para a rota 'dashboard'
         return redirect()->route('dashboard');
     }
 
-    /**
-     * Destroy an authenticated session.
-     */
     public function destroy(Request $request): RedirectResponse
     {
         Auth::guard('web')->logout();

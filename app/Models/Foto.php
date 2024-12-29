@@ -9,16 +9,19 @@ class Foto extends Model
 {
     use HasFactory;
 
+
     protected $fillable = [
         'titulo',
         'descricao',
         'caminho',
         'aprovado',
-        'user_id', // Permite atribuir o user_id na criação da foto
+        'user_id',
     ];
+
 
     public function user()
     {
+        
         return $this->belongsTo(User::class);
     }
 }

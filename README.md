@@ -46,14 +46,14 @@ Siga os passos abaixo para configurar e rodar o projeto:
     git clone https://github.com/seu-usuario/imagemcerta.git
     cd imagemcerta 
    
-##Certifique-se de que os seguintes softwares estão instalados em sua máquina:
+Certifique-se de que os seguintes softwares estão instalados em sua máquina:
 - **Docker**
 - **Docker Compose**
 
-##No diretório raiz do projeto, execute o seguinte comando para subir os containers:
+No diretório raiz do projeto, execute o seguinte comando para subir os containers:
 - **docker-compose up -d**
 
-##Após subir os containers, execute os comandos abaixo para instalar as dependências do Laravel e configurar o ambiente:
+Após subir os containers, execute os comandos abaixo para instalar as dependências do Laravel e configurar o ambiente:
 - **docker exec -it app-container-name composer install**
 - **docker exec -it app-container-name php artisan migrate**
 - **docker exec -it app-container-name php artisan storage:link**

@@ -44,6 +44,7 @@ Siga os passos abaixo para configurar e rodar o projeto:
 1.Clone o repositório:
     `bash`
     git clone https://github.com/seu-usuario/imagemcerta.git
+    
     cd imagemcerta 
    
 Certifique-se de que os seguintes softwares estão instalados em sua máquina:

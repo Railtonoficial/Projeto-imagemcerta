@@ -1,66 +1,59 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# ImagemCerta
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Sobre o Projeto
 
-## About Laravel
+ImagemCerta é uma aplicação web desenvolvida com o objetivo de gerenciar e aprovar imagens enviadas por usuários. Com um foco em usabilidade e escalabilidade, o projeto utiliza tecnologias modernas e padrões de mercado para garantir uma experiência fluida e segura.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Funcionalidades
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- Cadastro e autenticação de usuários utilizando **Laravel Breeze**.
+- Envio de imagens com título e descrição.
+- Visualização de imagens em uma galeria responsiva.
+- Aprovação ou rejeição de imagens por administradores.
+- Exclusão de imagens indesejadas.
+- Modal para visualização ampliada das fotos.
+- Feedback visual em ações como envio e avaliação de fotos.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Tecnologias Utilizadas
 
-## Learning Laravel
+### Back-end
+- **PHP 8.0**
+- **Laravel** (Framework principal)
+- **Laravel Breeze** (Sistema de autenticação)
+- **MySQL 5.7** (Banco de dados)
+- **Docker** (Gerenciamento do ambiente de desenvolvimento)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Front-end
+- **Bootstrap 5** (Estilização e responsividade)
+- **Font Awesome** (Ícones)
+- **HTML5/CSS3** (Estrutura e personalização)
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Estrutura do Projeto
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- **`routes/web.php`**: Define as rotas principais, como envio, avaliação e exclusão de fotos.
+- **`app/Http/Controllers`**: Contém os controladores responsáveis pela lógica de envio, aprovação e exibição de fotos.
+- **`resources/views`**: Abriga as views Blade para renderizar a interface do usuário.
+- **`public/storage`**: Diretório onde as imagens enviadas são armazenadas.
 
-## Laravel Sponsors
+## Como Executar o Projeto Usando Docker
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Siga os passos abaixo para configurar e rodar o projeto:
 
-### Premium Partners
+### 1. Pré-requisitos
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+1.Clone o repositório:
+    `bash`
+    git clone https://github.com/seu-usuario/imagemcerta.git
+    cd imagemcerta 
+   
+##Certifique-se de que os seguintes softwares estão instalados em sua máquina:
+- **Docker**
+- **Docker Compose**
 
-## Contributing
+##No diretório raiz do projeto, execute o seguinte comando para subir os containers:
+- **docker-compose up -d**
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+##Após subir os containers, execute os comandos abaixo para instalar as dependências do Laravel e configurar o ambiente:
+- **docker exec -it app-container-name composer install**
+- **docker exec -it app-container-name php artisan migrate**
+- **docker exec -it app-container-name php artisan storage:link**

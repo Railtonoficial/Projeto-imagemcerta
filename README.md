@@ -54,7 +54,7 @@ Certifique-se de que os seguintes softwares estão instalados em sua máquina:
 
 No diretório raiz do projeto, execute o seguinte comando para subir os containers:
 ```bash
-    docker-compose up -d
+docker-compose up -d
 ```
 
 Após subir os containers, execute os comandos abaixo para instalar as dependências do Laravel e configurar o ambiente:

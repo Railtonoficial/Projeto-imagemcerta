@@ -28,15 +28,6 @@ ImagemCerta é uma aplicação web desenvolvida com o objetivo de gerenciar e ap
 - **Font Awesome** (Ícones)
 - **HTML5/CSS3** (Estrutura e personalização)
 
-## Estrutura do Projeto
-
-- **`routes/web.php`**: Define as rotas principais, como envio, avaliação e exclusão de fotos.
-- **`app/Http/Controllers`**: Contém os controladores responsáveis pela lógica de envio, aprovação e exibição de fotos.
-- **`resources/views`**: Abriga as views Blade para renderizar a interface do usuário.
-- **`public/storage`**: Diretório onde as imagens enviadas são armazenadas.
-
-## Como Executar o Projeto Usando Docker
-
 Siga os passos abaixo para configurar e rodar o projeto:
 
 ### 1. Pré-requisitos
